@@ -48,7 +48,8 @@ def plot_weather_summary(hourly_weather, varname = 'temp', f = "min" ):
   fig.savefig(f"{f}_{varname}_weekly.png")
   plt.close()
 
-def main(weather_file):
+def main(weather_file='hourly_weather.csv'):
+  """ read in weather file and generate 3 basic plots"""
   hourly_weather = read_weather(weather_file)
   plot_weather_summary(hourly_weather, "temp", "min")
   plot_weather_summary(hourly_weather, "temp", "max")
