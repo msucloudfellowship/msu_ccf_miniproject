@@ -8,7 +8,7 @@ Could also use the Docker containers provided by Rocker (see the serverless sess
 
 The program only uses base R so no other packages need to be installed.  
 
-## Getting the software
+## Getting the script
 
 You can copy paste this program into your machine, or use git 
 
@@ -16,6 +16,10 @@ You can copy paste this program into your machine, or use git
 git clone https://github.com/msucloudfellowship/msu_ccf_miniproject.git
 cd msu_ccf_miniproject/R
 ```
+
+## Input data 
+
+see the [project readme](../readme.md#data).  
 
 ## Running
 

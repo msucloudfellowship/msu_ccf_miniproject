@@ -22,6 +22,11 @@ git clone https://github.com/msucloudfellowship/msu_ccf_miniproject.git
 cd msu_ccf_miniproject/Python
 ```
 
+## Input data 
+
+see the [project readme](../readme.md#data).  
+
+
 ## Running
 
 
