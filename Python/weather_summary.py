@@ -1,7 +1,7 @@
 # weather_summary.py
 
 import pandas as pd
-import os
+import sys,os
 from datetime import datetime
 from matplotlib import pyplot as plt
 import matplotlib.ticker as ticker
@@ -48,17 +48,25 @@ def plot_weather_summary(hourly_weather, varname = 'temp', f = "min" ):
   fig.savefig(f"{f}_{varname}_weekly.png")
   plt.close()
 
+def main(weather_file):
+  hourly_weather = read_weather(weather_file)
+  plot_weather_summary(hourly_weather, "temp", "min")
+  plot_weather_summary(hourly_weather, "temp", "max")
+  plot_weather_summary(hourly_weather, "prcp", "max")
 
 
 if __name__ == "__main__":
   """If this file is run from command line, 
   read weather data and generate 3 plots"""
-  # if env var is set use that, if not use default
-  weather_file = os.getenv("WEATHER_FILE")  or  "hourly_weather.csv"
-  hourly_weather = read_weather(weather_file)
-  plot_weather_summary(hourly_weather, "temp", "min")
-  plot_weather_summary(hourly_weather, "temp", "max")
-  plot_weather_summary(hourly_weather, "prcp", "max")
+
+  # check if the data file was sent on the command line
+  weather_files = ""
+  if len(sys.argv > 1):
+    weather_file = sys.argv[1]
+  else:
+    weather_file = os.getenv("WEATHER_FILE")  or  "hourly_weather.csv"
+  
+  main(weather_file)
 
 
 
