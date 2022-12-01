@@ -1,0 +1,5 @@
+.Rhistory
+.RData
+.venv
+*.gz
+*.csv
