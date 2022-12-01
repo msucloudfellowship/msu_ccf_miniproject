@@ -37,12 +37,15 @@ plot_weather_summary <- function(hourly_weather,varname = 'temp', f = "min" ) {
   plot(weather[[varname]] ~ weather[['week']], col=c, xlab="week", ylab = paste(f,"weekly",varname), 
        main = main_title, sub=sub_title)
 
+  return(main_title)
+
 }
 
 
-main<-function(pdf_file="weather_plots.pdf"){
-  pdf(pdf_file)
-  weather_file <- Sys.getenv("WEATHER_FILE", unset="hourly_weather.csv")
+main<-function(weather_file=NULL){
+  pdf("weather_plots.pdf")
+  # if no weather file was sent, look for env variable, or use the default
+  if (is.null(weather_file)) { weather_file <- Sys.getenv("WEATHER_FILE", unset="hourly_weather.csv")}
   
   hourly_weather <- read_weather(weather_file)
   
@@ -53,11 +56,21 @@ main<-function(pdf_file="weather_plots.pdf"){
   plot_weather_summary(hourly_weather,varname = "temp", "min")
   plot_weather_summary(hourly_weather,varname = "temp", "max")
   plot_weather_summary(hourly_weather,varname = 'prcp', "max")
-  dev.off()
+  d <- dev.off()
+  return(TRUE)
+
 }
 
+# if run from Rscript or as a command to R, look for command line arg and run main()
 if (!interactive()) {
-  main()
+  args = commandArgs(trailingOnly=TRUE)
+  if (length(args)> 0) {
+    weather_file = args[1]
+    print(paste("using weather_file ", weather_file))
+    main(weather_file)
+  } else {
+    main()
+  }
 }
 
   
