@@ -61,7 +61,7 @@ if __name__ == "__main__":
 
   # check if the data file was sent on the command line
   weather_files = ""
-  if len(sys.argv > 1):
+  if len(sys.argv) > 1:
     weather_file = sys.argv[1]
   else:
     weather_file = os.getenv("WEATHER_FILE")  or  "hourly_weather.csv"
