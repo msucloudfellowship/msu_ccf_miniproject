@@ -33,10 +33,10 @@ def plot_weather_summary(hourly_weather, varname = 'temp', f = "min" ):
   w['year'] = w['date'].apply(lambda x: datetime.strptime(x, "%Y-%m-%d").strftime("%Y"))
   w['week'] = w['date'].apply(lambda x: datetime.strptime(x, "%Y-%m-%d").strftime("%W"))
   pd.options.mode.chained_assignment = 'warn'
-  weather = w.groupby(['year','week'], axis=0).temp.agg(f).reset_index()
+  weather = w.groupby(['year','week'], axis=0)[varname].agg(f).reset_index()
 
   sns.set_theme(style="whitegrid")
-  g = sns.scatterplot(data=weather, x="week", y="temp", hue='year', palette="YlOrRd_r", legend=False ) # crest color palette
+  g = sns.scatterplot(data=weather, x="week", y=varname, hue='year', palette="YlOrRd_r", legend=False ) # crest color palette
   
   g.set(xlabel="week number",
        ylabel=f"{f} weekly {varname}",
@@ -47,7 +47,6 @@ def plot_weather_summary(hourly_weather, varname = 'temp', f = "min" ):
   fig = g.get_figure()
   fig.savefig(f"{f}_{varname}_weekly.png")
   plt.close()
-  g = None
 
 
 
