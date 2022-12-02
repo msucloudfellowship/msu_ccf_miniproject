@@ -1,4 +1,4 @@
-# R Program to read weather data and create sample plots
+# R script to read weather data and create sample plots
 
 ## Requirements
 
@@ -10,7 +10,7 @@ The program only uses base R so no other packages need to be installed.
 
 ## Getting the script
 
-You can copy paste this program into your machine, or use git 
+You can copy paste the [weather_summary.R](weather_summary.R) script from here into your machine, or use git and clone the whole repository
 
 ```bash
 git clone https://github.com/msucloudfellowship/msu_ccf_miniproject.git
