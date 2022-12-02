@@ -15,11 +15,12 @@ pip install -r requirements.txt
 
 ## Getting the script
 
-You can copy/paste this program into your machine, or use git in the terminal if it's installed
+You can copy/paste the [weather_summary.py](weather_summary.py) script from here into into your machine, or use git in the terminal (if it's installed) and get everything at once.  Git is available on the Windows DSVM. 
 
 ```bash
 git clone https://github.com/msucloudfellowship/msu_ccf_miniproject.git
-cd msu_ccf_miniproject/Python
+cd msu_ccf_miniproject
+cd Python
 ```
 
 ## Input data 

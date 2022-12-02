@@ -10,11 +10,12 @@ The program only uses base R so no other packages need to be installed.
 
 ## Getting the script
 
-You can copy paste the [weather_summary.R](weather_summary.R) script from here into your machine, or use git and clone the whole repository
+You can copy/paste the [weather_summary.R](weather_summary.R) script from here into your machine, or use git in the terminal (if it's installed) and get everything at once.  Git is available on the Windows DSVM. 
 
 ```bash
 git clone https://github.com/msucloudfellowship/msu_ccf_miniproject.git
-cd msu_ccf_miniproject/R
+cd msu_ccf_miniproject
+cd R  
 ```
 
 ## Input data 
