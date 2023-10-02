@@ -4,3 +4,7 @@
 *.gz
 *.csv
 .DS_Store
+*.zip
+
+*.pyc
+
