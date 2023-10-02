@@ -4,7 +4,8 @@
 from datetime import datetime
 from meteostat import Stations, Daily,Hourly
 
-def find_nearest_station(lat, lon, start = datetime(2011, 1, 1), end = datetime(2021,12,31)):
+# Michigan State University (42.729660, -84.481534)
+def find_nearest_station(lat=42.729660, lon=-84.481534, start = datetime(2011, 1, 1), end = datetime(2021,12,31)):
   # get all stations
   stations = Stations()
   # set filters on stations for those near campus with daily weather available
