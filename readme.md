@@ -1,10 +1,20 @@
 # Simple Weather Data Plotting Scripts
 
-**For use with the the MSU Cloud Fellowship mini-project**
+**For MSU Cloud Computing Fellowship Exercise**
 
 ## Overview
 
-These are the scripts to be run as part of the MSU Cloud Fellowship "mini project."  The goal of the mini-project is to demonstrate copying data to the cloud, and using cloud computing to run a basic script, save the output to cloud storage.  
+These are the scripts to be run for an exercise in the [MSU Cloud Computing Fellowship](https://msu-icer.github.io/cloudcomputingfellowship).  The goal of the exerciseis to demonstrate copying data to the cloud, and using cloud computing to run a basic script, save the output to cloud storage.    The steps we have in mind to work through are: 
+
+1. find a source of data you can use code to download
+2. create storage and compute resources in the cloud
+3. get these scripts into the compute resource
+4. run the data gathering script on the compute resource to pull data (CSV) and store into cloud storage
+5. 
+
+#### Skill level
+
+This exercise does not require you to 
 
 ## Scripts
 
@@ -55,3 +65,16 @@ For those that are very adventurous and want to try running these with container
 
 
 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+
+
+## BONUS POINTS! 
+
+There are different types of cloud storage with different pricing tiers from all cloud providers.   Azure has a 'files' or 'File Share' option which is easily connected to a windows or linux Virtual Machine.   However the cheapest and cloudiest option is what Azure calls 'blob' storage and the others call 'object' storage.    It's not the same as a file server in your company's data center, or the external drive you connect.   The best way to access object storage is with code. 
+
+The 'fetch weather data' script simply saves a file to CSV.  This then needs to be copies to to cloud storage for the exercise, or to save it cheaply.   How can you acheive this?   Which methods would work if you wanted to analyze across thousands of locations?
+
+ - download on your laptop, then use a program or the cloud web interface to upload to storage.   
+ - download on your laptop, but use the storage web API to upload (e.g with CURL or other)
+ - connect the storage to the VM (in Azure, you can mount azure files to a VM), then on the VM download the file and copy over the mounted connection
+ - for thousands of files, repeat any of the above, requires using Azure files tier and mounting file shares
+ - instead of saving to CSV, use the Azure software development key (SDK) to add lines of code that saves directly to cloud storage from your program.   requires only Blob storage and container 

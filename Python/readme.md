@@ -18,8 +18,8 @@ pip install -r requirements.txt
 You can copy/paste the [weather_summary.py](weather_summary.py) script from here into into your machine, or use git in the terminal (if it's installed) and get everything at once.  Git is available on the Windows DSVM. 
 
 ```bash
-git clone https://github.com/msucloudfellowship/msu_ccf_miniproject.git
-cd msu_ccf_miniproject
+git clone https://github.com/billspat/cloud_computing_script_exercise
+cd cloud_computing_script_exercise
 cd Python
 ```
 
