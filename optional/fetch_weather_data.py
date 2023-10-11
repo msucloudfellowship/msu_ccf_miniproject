@@ -11,12 +11,16 @@ python fetch_weather_data.py
 2. get from a different city, for example, Singapore
 in python
 >>> from fetch_weather_data import *
->>> lat, lon = ( 1.290270 , 103.851959 )
+>>> lat, lon = ( 1.290270 , 103.851959 ) 
 >>> station = find_nearest_station(lat, lon)
 >>> get_and_save_weather_data(station,start = datetime(2011, 1, 1), end = datetime(2021,12,31), suffix = "_singapore" )
 >>> exit()
 
+two files will be created: "daily_weather_singapore.csv" and "hourly_weather_singapore.csv"
 
+If you want to simply pull weather data into a variable, use the methods from the meteostat package directly  
+eg daily = Daily(station, start, end).fetch()
+)
 """
 
 from datetime import datetime
