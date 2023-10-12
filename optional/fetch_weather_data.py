@@ -8,12 +8,12 @@ usage:
 
 python fetch_weather_data.py
 
-2. get from a different city, for example, Singapore
+2. get from a different city, for example, paris
 in python
 >>> from fetch_weather_data import *
->>> lat, lon = ( 1.290270 , 103.851959 ) 
+>>> lat, lon = ( 48.864716, 2.349014 ) 
 >>> station = find_nearest_station(lat, lon)
->>> get_and_save_weather_data(station,start = datetime(2011, 1, 1), end = datetime(2021,12,31), suffix = "_singapore" )
+>>> get_and_save_weather_data(station,start = datetime(2000, 1, 1), end = datetime(2022,12,31), suffix = "_paris" )
 >>> exit()
 
 two files will be created: "daily_weather_singapore.csv" and "hourly_weather_singapore.csv"
