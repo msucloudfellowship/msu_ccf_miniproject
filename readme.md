@@ -8,13 +8,21 @@ These are the scripts to be run for an exercise in the [MSU Cloud Computing Fell
 
 1. find a source of data you can use code to download
 2. create storage and compute resources in the cloud
+    - virtual machine or equivalent
+    - azure file storage if you have not created it already in a new or existing storage account
+    - connect the storage to the virtual machine, for example [Mount SMB Azure file share on Windows](https://learn.microsoft.com/en-us/azure/storage/files/storage-how-to-use-files-windows)
+    - alternatively write your own python or R code to read and write from object storage (e.g. Azure Blob storage)
 3. get these scripts into the compute resource
 4. run the data gathering script on the compute resource to pull data (CSV) and store into cloud storage
-5. 
+5. run the script ( indicating the data file path), which spits out images of visualizations
+6. save the visualizations to storage
+7. delete the computational resources
 
 #### Skill level
 
-This exercise does not require you to 
+This exercise does not require you to know how to write R or Python scripts as they are complete, but you do need to know how to run python scripts from an program like Rstudio or Python Idle or, ideally, from the command line.    However it assumes you've worked through the material for [sessions 2](https://msu-icer.github.io/cloudcomputingfellowship/sessions/02_how_to_cloud/) and [session 3](https://msu-icer.github.io/cloudcomputingfellowship/sessions/03_cloud_storage/) from the MSU Cloud computing fellowship, or basic knowledge of Virtual Machines and File (SMB storage).  
+
+The scripts themselves could be run on your laptop, there is nothing 'cloudy' about them (except that they analyze weather data).   However, if you would like to test the limits of cloud computational power, you could download weather for a long time periord or several locations that would be time consuming or require significant data storage.   Bonus points for anyone who could write and contribute a shell script to pull and analyze multiple locations.   
 
 ## Scripts
 
@@ -45,10 +53,11 @@ I tried to make it as flexible as possible to specify to the scripts (both Pytho
 
 - The default is to look for a file called "hourly_weather.csv" in the same folder as the script.   You just run the program and it will work
 - If you run from the command line you can specify the location as a command-line argument. See the instructions for each script.    Adjust for Windows vs Linux
-- Alternatively, the scripts look for an environment variable with the name of the data file.   Setting the environment variable WEATHER_FILE before running the script and run without command line arguments it will use that find the file.   For example `../hourly_weather.csv` to use a file in this main directory, which is the parent directory to your script file.  
+- Alternatively, the scripts look for an environment variable with the name of the data file.   Setting the environment variable WEATHER_FILE before running the script and run without command line arguments it will use that find the file.   For example on Windows, first issue the command `set WEATHER_FILE=../hourly_weather.csv` to use a file in this main directory, which is the parent directory to your script file.  
 
-**Optional: Set environment variable in Windows cmd.exe :**
+**Optional Example: Specififying the location of the data file by setting environment variable in Windows cmd.exe :**
 
+Assume you've mounted your file share storage on the "Z:" drive as the tutorial suggested 
 ```
 set WEATHER_FILE=..\hourly_weather.csv
 ```
@@ -78,3 +87,4 @@ The 'fetch weather data' script simply saves a file to CSV.  This then needs to 
  - connect the storage to the VM (in Azure, you can mount azure files to a VM), then on the VM download the file and copy over the mounted connection
  - for thousands of files, repeat any of the above, requires using Azure files tier and mounting file shares
  - instead of saving to CSV, use the Azure software development key (SDK) to add lines of code that saves directly to cloud storage from your program.   requires only Blob storage and container 
+
