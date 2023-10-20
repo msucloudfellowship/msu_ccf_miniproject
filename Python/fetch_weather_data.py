@@ -31,6 +31,18 @@ def find_nearest_station(lat=42.729660,
                          lon=-84.481534, 
                          start = datetime(2011, 1, 1), 
                          end = datetime(2021,12,31)):
+  """Wrapper around the meteostat Station() function providing default values for 
+  a station near Michigan State University (which turns out to be Lansing Airport)
+
+  see https://dev.meteostat.net/python/stations.html#example for details
+ 
+  Args:
+      lat (float, optional): Latitude used to search for station. Defaults to 42.729660.
+      lon (float, optional): Longitude used to search for station. Defaults to -84.481534.
+      start (datetime, optional): Start date for when we would like to find weather, looks for a station that has data from this period. Defaults to datetime(2011, 1, 1).
+      end (datetime, optional): Start date for when we would like to find weather, looks for a station that has data from this period. Defaults to datetime(2021,12,31).
+  """
+
   # get all stations
   stations = Stations()
   # set filters on stations for those near campus with daily weather available
@@ -43,7 +55,7 @@ def find_nearest_station(lat=42.729660,
   return(station)
 
 def get_and_save_hourly_weather_file(
-    hourly_file_path = 'hourly_weather.csv', 
+    hourly_file_path = '../data/hourly_weather.csv', 
     station=find_nearest_station(), 
     start = datetime(2011, 1, 1), 
     end = datetime(2021,12,31)
@@ -55,11 +67,11 @@ def get_and_save_hourly_weather_file(
   This has the side effect: writes files to disk.  If you want to pull data into memory, just use the meteostat 
   package 'Hourly()' function directly in your code
 
-  parameters: 
-  station : Meteogram station object, default is from find_nearest_station function above
-  start : datetime object, default Jan 1 2011
-  end : datetime object occuring after start, default Dec 31, 2021
-  returns: Boolean T if pull and write was successful. 
+  Args:
+      station (meteostat station object): Meteogram station object, default is from find_nearest_station function above
+      start (datetime, optional): Start date of weather data. Defaults to datetime(2011, 1, 1).
+      end (datetime, optional): End date of weather data, occurring after start. Defaults to datetime(2021,12,31).
+      returns: Boolean T if pull and write was successful. 
   """
   
   try:    
@@ -72,6 +84,7 @@ def get_and_save_hourly_weather_file(
   return(True)
 
 
+# this is a previous version that is not longer used.  
 
 def get_and_save_weather_data(station=find_nearest_station(), 
               start = datetime(2011, 1, 1), 
@@ -101,4 +114,4 @@ def get_and_save_weather_data(station=find_nearest_station(),
   return(True)
 
 if __name__ == "__main__":
-  get_and_save_weather_data()
+  get_and_save_hourly_weather_file()
