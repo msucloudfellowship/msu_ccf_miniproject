@@ -42,6 +42,37 @@ def find_nearest_station(lat=42.729660,
   station = stations.fetch(1)
   return(station)
 
+def get_and_save_hourly_weather_file(
+    hourly_file_path = 'hourly_weather.csv', 
+    station=find_nearest_station(), 
+    start = datetime(2011, 1, 1), 
+    end = datetime(2021,12,31)
+    ):
+  
+  """ save hourly and daily weather to csv files. 
+  This is mostly a convenience wrapper with reasonable default values for the meteostat.Hourly() function
+
+  This has the side effect: writes files to disk.  If you want to pull data into memory, just use the meteostat 
+  package 'Hourly()' function directly in your code
+
+  parameters: 
+  station : Meteogram station object, default is from find_nearest_station function above
+  start : datetime object, default Jan 1 2011
+  end : datetime object occuring after start, default Dec 31, 2021
+  returns: Boolean T if pull and write was successful. 
+  """
+  
+  try:    
+    #define hourly object and fetch all data
+    hourly_data = Hourly(station, start, end).fetch()
+    hourly_data.to_csv(hourly_file_path)
+    print(f"hourly weather saved to {hourly_file_path}")
+  except Exception as e:
+    print("weather file writing error:", e)
+  return(True)
+
+
+
 def get_and_save_weather_data(station=find_nearest_station(), 
               start = datetime(2011, 1, 1), 
               end = datetime(2021,12,31), 
