@@ -1,5 +1,6 @@
-# README: fetch_weather_data.py
+# Getting Weather Data with Python
 
+**Part of the [MSU Cloud Computing Fellowship Script Exercise](../readme.md)**
 
 Before summarizing and visualizating weather data, you need to get some.  This program demonstrates and provides convenience functions
 for using the excellent and totally free Meteostat system and python library.   For more information about Meteostat project see : https://meteostat.net

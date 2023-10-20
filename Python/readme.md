@@ -25,7 +25,8 @@ cd Python
 
 ## Input data 
 
-see the [project readme](../readme.md#data).  
+There are instructions for pulling data from any weather station in the world, with the defaults being the station nearest Michigan State University. 
+See the [Getting Weather Data with Python](getting_data_python.md).  
 
 
 ## Running
